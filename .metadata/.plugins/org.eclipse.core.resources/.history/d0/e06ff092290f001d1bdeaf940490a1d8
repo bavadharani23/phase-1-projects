@@ -1,0 +1,77 @@
+package Phase1Project;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class VirtualKeyRepo {
+	File folder_name;
+	static String DIRECTORY;
+	    public VirtualKeyRepo() {
+	        DIRECTORY = System.getProperty("user.dir");// this is used to get the current working directory
+	        folder_name = new File(DIRECTORY+"/files"); // "/files" is used to add the file which you create inside files folder in phase1project module orelse the files will be created but not inside the files folder.
+	    }
+	    private static final String WELCOME_PROMPT =
+	            "\n*****************  LockedMe.com *******************"+
+	                    "\n***************** Developer: BAVADHARANI *******************\n";
+	
+	void CreateFile() throws IOException
+	{
+		Scanner sc = new Scanner(System.in);
+        System.out.println("File you want to add to the app: ");
+        String fileName = sc.nextLine();
+        File sourceFile = new File(folder_name+"/"+fileName);// "/" is used to create a file in files folder. If you use like this "/files" then it will created like filesjava but the file name you gave would be only java.
+        if(sourceFile.exists())
+        {
+        	System.out.println("File is already present");
+        }
+        if(sourceFile.createNewFile())
+        {
+        	System.out.println("File "+fileName+" added successfully");
+        }
+        else
+        {
+        	System.out.println("File "+fileName+" not added ");
+        }
+        
+	}
+	void deleteFile()
+	{
+		Scanner sc = new Scanner(System.in);
+        System.out.println("File you want to delete to the app: ");
+        String fileName = sc.nextLine();
+        File sourceFile = new File(folder_name+"/"+fileName);
+        String[] list = folder_name.list();
+        for (String file: list) {
+            if (fileName.equals(file) && sourceFile.delete()) {
+                System.out.println("File " + fileName + " deleted from " + folder_name);
+                return; // we have give return or else the file not found print statement will also execute.
+            }
+        }
+        System.out.println("File " + fileName + " is not found");
+		
+	}
+	void searchFile()
+	{
+		Scanner sc = new Scanner(System.in);
+        System.out.println("File you want to search to the app: ");
+        String fileName = sc.nextLine();
+        String[] list = folder_name.list();
+        for (String file: list) {
+            if (fileName.equals(file)) {
+                System.out.println("FOUND : File " + fileName + " exists at " + folder_name);
+                return;
+            }
+        }
+        System.out.println("File NOT found (FNF)");
+    }
+        
+	public static void main(String[] args) throws IOException
+	{
+		System.out.println(WELCOME_PROMPT);
+		VirtualKeyRepo obj=new VirtualKeyRepo();
+		obj.CreateFile();
+		obj.deleteFile();
+		obj.searchFile();
+	}
+}

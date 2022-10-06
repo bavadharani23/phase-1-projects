@@ -1,0 +1,12 @@
+package Phase1Project;
+
+public class Main {
+	private static final char[] WELCOME_PROMPT = null;
+
+	public static void main(String[] args) {
+		System.out.println(WELCOME_PROMPT);
+		VirtualKeyRepo obj=new VirtualKeyRepo();
+		obj.showPrimaryMenu();
+	}
+
+}

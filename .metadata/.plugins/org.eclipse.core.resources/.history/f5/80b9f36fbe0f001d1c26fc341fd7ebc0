@@ -1,0 +1,14 @@
+package Phase1Project;
+
+public class Main {
+	
+	public static void main(String[] args) {
+	           String WELCOME_PROMPT =
+	            "\n*****************  LockedMe.com *******************"+
+	                    "\n***************** Developer: BAVADHARANI ***************\n";
+	    System.out.println(WELCOME_PROMPT);
+		VirtualKeyRepo obj=new VirtualKeyRepo();
+		obj.showPrimaryMenu();
+	}
+
+}
